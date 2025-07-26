@@ -45,8 +45,8 @@ Features shopping cart, orders, Stripe payments, product & category management, 
 
 1. **Clone & enter directory**
    ```bash
-   git clone https://github.com/justzeiad/ecommerce-api.git
-   cd ecommerce-api
+   git clone https://github.com/justzeiad/Ecommerce.git
+   cd Ecommerce
    ```
 
 2. **Virtualenv & dependencies**
