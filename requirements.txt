@@ -1,0 +1,22 @@
+# Core
+Django
+djangorestframework
+
+# Auth
+djangorestframework-simplejwt
+
+# CORS
+django-cors-headers
+
+# Environment variables
+python-dotenv
+
+# Payments
+stripe
+
+# API docs
+drf-yasg
+
+# Dev tools
+black
+isort
