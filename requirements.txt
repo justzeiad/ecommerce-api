@@ -1,22 +1,40 @@
-# Core
-Django
-djangorestframework
-
-# Auth
-djangorestframework-simplejwt
-
-# CORS
-django-cors-headers
+# Core Django & DRF
+Django>=5.2,<6.0
+djangorestframework>=3.14,<4.0
 
 # Environment variables
-python-dotenv
+python-dotenv>=1.0.0
 
-# Payments
-stripe
+# Authentication & Authorization
+djangorestframework-simplejwt>=5.3.0
 
-# API docs
-drf-yasg
+# CORS handling
+django-cors-headers>=4.3.0
 
-# Dev tools
-black
-isort
+# Payment processing
+stripe>=7.0.0
+
+# API Documentation
+drf-yasg>=1.21.7
+
+# Image handling
+Pillow>=10.0.0
+
+# Filtering & search
+django-filter>=23.0
+
+# Database (PostgreSQL support for production)
+psycopg2-binary>=2.9.9
+
+# Production web server
+gunicorn>=21.2.0
+
+# Static file serving in production
+whitenoise>=6.6.0
+
+# Development tools (optional in production)
+black>=23.12.0
+isort>=5.13.0
+
+# Testing (optional)
+coverage>=7.4.0

@@ -76,7 +76,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
         data['user'] = UserSerializer(self.user).data
-        return 
+        return data 
     
 class UserDeleteSerializer(serializers.Serializer):
     current_password = serializers.CharField(
