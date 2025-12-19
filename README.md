@@ -100,12 +100,11 @@ See [requirements.txt](requirements.txt) for a complete list of dependencies.
 
 ## 🔧 Installation
 
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/justzeiad/dj-ecommerce.git
-cd dj-ecommerce
-```
+1. **Clone & enter directory**
+   ```bash
+   git clone https://github.com/justzeiad/dj-ecommerce.git
+   cd dj-ecommerce
+   ```
 
 ### 2. Create and activate virtual environment
 
