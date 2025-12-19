@@ -409,7 +409,7 @@ Contributions are welcome! Here's how you can help:
 1. **Fork the repository**
 2. **Create a feature branch**
    ```bash
-   git checkout -b feature/amazing-feature
+   git checkout -b feature/new-feature
    ```
 3. **Make your changes**
    - Write clean, documented code
