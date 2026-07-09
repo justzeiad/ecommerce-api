@@ -1,6 +1,7 @@
 from rest_framework import generics, permissions, filters
 from rest_framework.exceptions import PermissionDenied
 from django_filters.rest_framework import DjangoFilterBackend
+from django.core.cache import cache
 from .models import Category, Product
 from .serializers import CategorySerializer, ProductSerializer, ProductListSerializer
 
@@ -36,16 +37,26 @@ class ProductListCreateView(generics.ListCreateAPIView):
     ordering = ['-created_at']
 
     def get_queryset(self):
+        cache_key = 'product_list_all'
+        queryset = cache.get(cache_key)
+        if queryset is not None:
+            return queryset
+
         queryset = Product.objects.select_related('category')
         # Non-admin users only see active products
         if not (self.request.user and self.request.user.is_staff):
             queryset = queryset.filter(is_active=True)
+        cache.set(cache_key, queryset, 60 * 5)
         return queryset
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return ProductListSerializer
         return ProductSerializer
+
+    def perform_create(self, serializer):
+        serializer.save()
+        cache.delete('product_list_all')
 
 
 class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -60,3 +71,11 @@ class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
         if not (self.request.user and self.request.user.is_staff):
             queryset = queryset.filter(is_active=True)
         return queryset
+
+    def perform_update(self, serializer):
+        serializer.save()
+        cache.delete('product_list_all')
+
+    def perform_destroy(self, instance):
+        instance.delete()
+        cache.delete('product_list_all')

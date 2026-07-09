@@ -74,11 +74,19 @@ A full-featured RESTful E-Commerce backend API built with Django 5.2 and Django 
   - ReDoc documentation
   - OpenAPI schema generation
 
+- **⚡ Redis Caching**
+  - Product listing caching with 5-minute TTL
+  - Auto-invalidation on product create/update/delete
+
+- **🐳 Docker Compose**
+  - Containerised app with Gunicorn, PostgreSQL 16, Redis 7
+  - Single `docker compose up --build` to run everything
+
 ### 🗺️ Roadmap
 
 - [ ] **🧪 Testing** — Pytest suite with 80+ unit and integration tests targeting 90% coverage
-- [ ] **⚡ Redis Caching** — Product listing cache for ~60% reduction in database queries
-- [ ] **🐳 Docker Compose** — Containerised app, PostgreSQL, and Redis for reproducible environments
+- [x] **⚡ Redis Caching** — Product listing cache for ~60% reduction in database queries
+- [x] **🐳 Docker Compose** — Containerised app, PostgreSQL, and Redis for reproducible environments
 - [ ] **🗄️ PostgreSQL** — Production database setup with psycopg2
 - [ ] **🚀 CI/CD** — Automated test + deploy pipeline
 - [ ] **📦 More** — Additional features as needed
