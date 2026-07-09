@@ -6,7 +6,7 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-A modern, full-featured RESTful E-Commerce backend API built with Django 5.2 and Django REST Framework. Features include shopping cart management, order processing, Stripe payment integration, product & category management, and secure JWT-based authentication with a custom email-based user model.
+A full-featured RESTful E-Commerce backend API built with Django 5.2 and Django REST Framework. Features include shopping cart management, order processing, Stripe payment integration, product & category management, and secure JWT-based authentication with a custom email-based user model.
 
 ---
 
@@ -22,12 +22,15 @@ A modern, full-featured RESTful E-Commerce backend API built with Django 5.2 and
 - [Testing](#-testing)
 - [Deployment](#-deployment)
 - [Project Structure](#-project-structure)
+- [Roadmap](#-roadmap)
 - [Contributing](#-contributing)
 - [License](#-license)
 
 ---
 
 ## ✨ Features
+
+### ✅ Implemented
 
 - **🔐 User Authentication**
   - Email-based registration and login
@@ -71,6 +74,15 @@ A modern, full-featured RESTful E-Commerce backend API built with Django 5.2 and
   - ReDoc documentation
   - OpenAPI schema generation
 
+### 🗺️ Roadmap
+
+- [ ] **🧪 Testing** — Pytest suite with 80+ unit and integration tests targeting 90% coverage
+- [ ] **⚡ Redis Caching** — Product listing cache for ~60% reduction in database queries
+- [ ] **🐳 Docker Compose** — Containerised app, PostgreSQL, and Redis for reproducible environments
+- [ ] **🗄️ PostgreSQL** — Production database setup with psycopg2
+- [ ] **🚀 CI/CD** — Automated test + deploy pipeline
+- [ ] **📦 More** — Additional features as needed
+
 ---
 
 ## 🛠 Tech Stack
@@ -80,7 +92,7 @@ A modern, full-featured RESTful E-Commerce backend API built with Django 5.2 and
 - **Authentication:** djangorestframework-simplejwt
 - **Payment Processing:** Stripe
 - **API Documentation:** drf-yasg (Swagger/OpenAPI)
-- **Database:** SQLite (development) / PostgreSQL (production)
+- **Database:** SQLite (development) / PostgreSQL (targeted for production)
 - **Image Processing:** Pillow
 - **CORS:** django-cors-headers
 - **Environment Management:** python-dotenv
@@ -172,7 +184,8 @@ Create a `.env` file in the root directory with the following variables:
 | `DJANGO_SECRET_KEY` | Django secret key for cryptographic signing | `your-secret-key-here` | ✅ |
 | `DJANGO_DEBUG` | Debug mode (set to False in production) | `True` | ✅ |
 | `DJANGO_ALLOWED_HOSTS` | Comma-separated list of allowed hosts | `localhost,127.0.0.1` | ✅ |
-| `STRIPE_SECRET_KEY` | Stripe API secret key | `sk_test_...` | ✅ |
+| `STRIPE_SECRET_KEY` | Stripe API secret key | `sk_test_...` | for payments |
+| `STRIPE_WEBHOOK_SECRET` | Stripe webhook signing secret | `whsec_...` | for webhook |
 | `DATABASE_URL` | Database connection URL | `sqlite:///db.sqlite3` | ⚠️ |
 
 > **⚠️ Note:** Never commit your `.env` file to version control. Use `.env.example` as a template.
@@ -279,75 +292,19 @@ http://127.0.0.1:8000/swagger.json
 ### Running Tests
 
 ```bash
-# Run all tests
+# Run all tests (once test suite is added)
 python manage.py test
-
-# Run tests for a specific app
-python manage.py test products
-
-# Run with coverage
-coverage run --source='.' manage.py test
-coverage report
-```
-
-### Test Coverage
-
-To generate a detailed coverage report:
-
-```bash
-pip install coverage
-coverage run --source='.' manage.py test
-coverage html
-# Open htmlcov/index.html in your browser
 ```
 
 ---
 
-## 🚀 Deployment
+## 🗺️ Roadmap
 
-### Production Checklist
-
-Before deploying to production:
-
-1. **Environment Variables**
-   - Set `DJANGO_DEBUG=False`
-   - Update `DJANGO_ALLOWED_HOSTS` with your domain
-   - Use a strong, unique `DJANGO_SECRET_KEY`
-   - Configure production database (PostgreSQL recommended)
-   - Set production `STRIPE_SECRET_KEY`
-
-2. **Database**
-   ```bash
-   # Use PostgreSQL in production
-   pip install psycopg2-binary
-   # Update DATABASE_URL in .env
-   ```
-
-3. **Static Files**
-   ```bash
-   python manage.py collectstatic
-   ```
-
-4. **Security Settings**
-   - Enable HTTPS
-   - Configure CORS settings for your frontend domain
-   - Set up proper firewall rules
-   - Enable security middleware
-
-5. **Monitoring**
-   - Set up error tracking (e.g., Sentry)
-   - Configure logging
-   - Monitor server performance
-
-### Deployment Platforms
-
-This application can be deployed to:
-
-- **Heroku:** Use Heroku's PostgreSQL addon and configure buildpacks
-- **AWS:** Deploy using Elastic Beanstalk or EC2 with RDS
-- **DigitalOcean:** Use App Platform or Droplets
-- **Railway:** Simple deployment with automatic PostgreSQL provisioning
-- **Render:** Easy deployment with managed databases
+- [ ] **🧪 Test Suite** — 80+ Pytest unit & integration tests targeting 90% coverage
+- [ ] **⚡ Redis Caching** — Product listing cache to reduce database query load
+- [ ] **🐳 Docker Compose** — Containerised app with PostgreSQL, Redis, and the API
+- [ ] **🗄️ PostgreSQL** — Production database configuration
+- [ ] **🚀 CI/CD** — Automated testing and deployment pipeline
 
 ---
 
@@ -462,4 +419,3 @@ This project is licensed under the MIT License.
 For questions, issues, or feature requests:
 
 - **Issues:** [GitHub Issues](https://github.com/justzeiad/dj-ecommerce/issues)
-
