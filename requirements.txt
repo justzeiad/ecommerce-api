@@ -42,3 +42,5 @@ isort>=5.13.0
 
 # Testing (optional)
 coverage>=7.4.0
+pytest>=8.0.0
+pytest-django>=4.8.0
